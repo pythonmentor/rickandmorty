@@ -1,8 +1,31 @@
 {% extends 'app/bases.html' %}
+{% load static %}
 
-{% block content %}
-    <div>
-        <h4 class="tilte">TITLE</h4>
-        <a href="{% url 'app:content' %}">content</a>
+{% block content_header %}
+    <!--Display of the header of the html page-->
+    <div class="header_home">
+        <h4 class="title"><font face="verdana">Rick and Morty Fanatics universes</font></h4>
     </div>
-{% endblock content %}
+{% endblock content_header %}
+
+{% block content_body %}
+    <!--Display of the body of the html page-->
+    <div class="body_home">
+        <a href="{% url 'app:content' %}">
+            <p class='link'>
+                Suivre l'évolution de l'application
+            </p>
+        </a>
+        <!--p>
+            <img src="{% static 'app/pictures/test.png' %}" class="background" alt="Rick and Morty"/>
+        </p-->
+    </div>
+
+{% endblock content_body %}
+
+{% block content_footer %}
+    <!--Display of the foot of the html page-->
+    <div class="footer_home">
+        <h5>.: Created by | Lyss | Sulyvan Dercourt Concéption/Montage  HTML5 | CSS3 2019 © :.</h5>
+    </div>
+{% endblock content_footer %}

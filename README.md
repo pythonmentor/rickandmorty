@@ -1,11 +1,12 @@
-# Application web "Rick ANd Morty"
+**Rick and Morty Fanatics universes**
+
 
 #### Application web *Rick And Morty*
 
-## Type de base de donnèes:
+## Type de base de donnèes :
 -MySQL 8.0
 
-## Environnement virtuel:
+## Environnent virtuel:
 -PipEnv
 
 ## Exercice de développement multiplateforme:
@@ -31,11 +32,9 @@ https://github.com/Lyss74/AboutsGoodsApp/archive/master.zip
 ## Ou cloner le repository:
 https://github.com/Lyss74/AboutsGoodsApp.git
 
-## Packages nécessaire
+## Packages nécessaires:
     - Django
-    - records 
-    - requests 
-    - mysql-connector-python                
+               
 
 #### Installation:
 Rendez-vous dans le répertoire du projet avec l'invité de commande
@@ -52,15 +51,18 @@ une fois fait, après quelques secondes:
     pipenv install 
     -[Cette commande installera tous les packages, en suivant le fichier Pipfile]
 
-### Lancez un serveur SQL afin dutiliser la base de donnèes.
+### Lancez un serveur SQL afin d'utiliser la base de données.
 
 ## La connexion à la base se fera sous ces identifiants: 
-    DATABASE = 'PurBeurre'
-    USER = 'OPFF' 
-    PASSWORD = 'OCP5' 
+    DATABASE = ' '
+    USER = ' ' 
+    PASSWORD = ' ' 
 
-### Lancez un serveur Django afin dutiliser le framework.
-
+### Lancez un serveur Django afin d'utiliser le framework.
+# Avant de lancer le serveur pensez à changer son identifiant, rendez-vous dans le fichier:
+    "webapp/settings.py" ligne 26 
+     SECRET_KEY = 'your password'
+# Ensuite lancez le serveur:
 Rendez-vous dans le répertoire du projet avec l'invité de commande
 
 ## Exemple de positionnement: 
@@ -68,7 +70,7 @@ Rendez-vous dans le répertoire du projet avec l'invité de commande
 
 ## Puis tapez dans l'invité de commande
     -py manage.py runserver
-# Pensez à relever l'ip du serveur qui va receuillir l'application web *Rick And Morty*.
+# Pensez à relever l'adresse ip du serveur qui va recueillir l'application web *Rick And Morty*.
 
 ### Lancement
 
@@ -81,7 +83,7 @@ Rendez-vous dans le répertoire du projet avec l'invité de commande
 
 # Fonctionnalités de l'application:
 
-# *The Rick and Morty universe*
+# *Rick and Morty Fanatics universes*
 
 ### We need to create a front interface for the Rick & Morty universe, to allow fans to navigate through elements and character of the TV Show.
     [FR]-Nous devons créer une interface frontale pour l'univers Rick & Morty, afin de permettre aux fans de naviguer à travers les éléments et le personnage de l'émission.

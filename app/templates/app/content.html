@@ -1,9 +1,31 @@
-{% extends 'app/bases.html' %}
+{% extends 'app/bases.html' %} <!--inheritance of the html structure-->
 
-{% block content %}
-    <div>
-        <h4 class="content">TITLE</h4>
-        <p>hello world</p>
-        <p>{{ key }}</p>   <!-- simple variable-->
+{% block content_header %}
+    <!--Display of the header of the html page-->
+    <div class="header_home">
+        <h4 class="title"><font face="verdana">Rick and Morty Fanatics universes</font></h4>
     </div>
-{% endblock content %}
+{% endblock content_header %}
+
+{% block content_body %}
+    <!--Display of the body of the html page-->
+    <div class="body_content">
+        <p>
+            <a class="git_hub" href="https://github.com/Lyss74/AboutsGoodsApp">
+                Consulter le Git hub
+            </a>
+        </p>
+        <p>
+            <a class="diagr" href="https://www.draw.io/#G1oXDlNG24hWU6TSOFxQqI69Z97v0tndfm">
+                Consulter le diagramme de classe
+            </a>
+        </p>
+    </div>
+{% endblock content_body %}
+
+{% block content_footer %}
+    <!--Display of the foot of the html page-->
+    <div class="footer_home">
+        <h5>.: Created by | Lyss | Sulyvan Dercourt Concéption/Montage  HTML5 | CSS3 2019 © :.</h5>
+    </div>
+{% endblock content_footer %}
