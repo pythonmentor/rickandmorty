@@ -35,33 +35,11 @@ https://github.com/Lyss74/AboutsGoodsApp.git
 ## Packages nécessaires:
     - Django
                
-
-#### Installation:
-Rendez-vous dans le répertoire du projet avec l'invité de commande
-
-## Exemple de positionnement: 
-    "C:Users\Admin\Desktop\AboutsGoodsApp"
-
-## Installez pipenv: 
-    pip install pipenv
-
-une fois fait, après quelques secondes:
-
-## Tapez: 
-    pipenv install 
-    -[Cette commande installera tous les packages, en suivant le fichier Pipfile]
-
-### Lancez un serveur SQL afin d'utiliser la base de données.
-
-## La connexion à la base se fera sous ces identifiants: 
-    DATABASE = ' '
-    USER = ' ' 
-    PASSWORD = ' ' 
-
 ### Lancez un serveur Django afin d'utiliser le framework.
 # Avant de lancer le serveur pensez à changer son identifiant, rendez-vous dans le fichier:
     "webapp/settings.py" ligne 26 
      SECRET_KEY = 'your password'
+     
 # Ensuite lancez le serveur:
 Rendez-vous dans le répertoire du projet avec l'invité de commande
 
@@ -71,15 +49,6 @@ Rendez-vous dans le répertoire du projet avec l'invité de commande
 ## Puis tapez dans l'invité de commande
     -py manage.py runserver
 # Pensez à relever l'adresse ip du serveur qui va recueillir l'application web *Rick And Morty*.
-
-### Lancement
-
-## Tapez: 
-    pipenv run python main.py 
-
-## Pour directement alimenter la base de donnèes:
-    pipenv run python main.py --database 
-
 
 # Fonctionnalités de l'application:
 
