@@ -6,7 +6,7 @@ from app.models import Episode
 
 
 class Command(BaseCommand):
-    help = 'Dowload all episodes'
+    help = 'Download all episodes'
 
     def handle(self, *args, **options):
         """ Use the configuration for the connecting interface """
