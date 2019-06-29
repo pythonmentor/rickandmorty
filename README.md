@@ -16,20 +16,20 @@ https://www.python.org/ftp/python/3.7.2/python-3.7.2.exe
 # Packages Python nécessaires :
 - Django
 - Request
-
-`` ` shell
+```shell
 git clone https://github.com/Lyss74/AboutsGoodsApp.git
 cd AboutsGoodsApp
-pipenv install `` `
-
+pipenv install
+```
 Cela va installè les packages nécessaires et lancer l'environnement virtuel.
-
 
 ## Lancez un serveur Django afin d'utiliser le framework:
     
 # Ensuite lancez le serveur :
-`` ` shell /AboutsGoodsApp
-python manage.py runserver  `` `
+```shell
+cd AboutsGoodsApp
+python manage.py runserver  
+```
 
 Pensez à relever l'adresse ip du serveur qui va recueillir l'application web *Rick And Morty*.
 Vous pouvez dès à présent accéder à la page d'accueil de l'application.
