@@ -1,83 +1,50 @@
-**Rick and Morty Fanatics universes**
-
-
-#### Application web *Rick And Morty*
-
-## Type de base de donnèes :
--MySQL 8.0
-
-## Environnent virtuel:
--PipEnv
-
-## Exercice de développement multiplateforme:
-https://aboutgoods.github.io/TestsInterviewsDev/multiplateformDeveloper2019
-
-## Api *Rick And Morty*:
-http://rickandmortyapi.com 
-
-## Diagramme de classe: 
-https://www.draw.io/#G1oXDlNG24hWU6TSOFxQqI69Z97v0tndfm
-
-## Langue d'écriture, variables, commentaires, fonctions: 
--Anglais
-
-## Installation [Python 3.7]
-https://www.python.org/ftp/python/3.7.2/python-3.7.2.exe
-
-##### Téléchargement:
-
-## Télécharger le fichier: 
-https://github.com/Lyss74/AboutsGoodsApp/archive/master.zip
-
-## Ou cloner le repository:
-https://github.com/Lyss74/AboutsGoodsApp.git
-
-## Packages nécessaires:
-    - Django
-               
-### Lancez un serveur Django afin d'utiliser le framework.
-# Avant de lancer le serveur pensez à changer son identifiant, rendez-vous dans le fichier:
-    "webapp/settings.py" ligne 26 
-     SECRET_KEY = 'your password'
-     
-# Ensuite lancez le serveur:
-Rendez-vous dans le répertoire du projet avec l'invité de commande
-
-## Exemple de positionnement: 
-    "C:Users\Admin\Desktop\AboutsGoodsApp"
-
-## Puis tapez dans l'invité de commande
-    -py manage.py runserver
-# Pensez à relever l'adresse ip du serveur qui va recueillir l'application web *Rick And Morty*.
-
-# Fonctionnalités de l'application:
+![Logo of the project](https://rickandmortyapi.com/api/character/avatar/1.jpeg)
 
 # *Rick and Morty Fanatics universes*
 
-### We need to create a front interface for the Rick & Morty universe, to allow fans to navigate through elements and character of the TV Show.
-    [FR]-Nous devons créer une interface frontale pour l'univers Rick & Morty, afin de permettre aux fans de naviguer à travers les éléments et le personnage de l'émission.
+Une application web "Django", fait par un fan pour les fans.
 
-### Nous avons particulièrement besoin de :
+### Installation / Mise en route
 
-## Browse all the locations of all differents universes in a list:
-    [FR]-Parcourir tous les emplacements de tous les différents univers dans une liste 
-        -universe = ['locations'] / total page = 4
+# Installation [Python 3.7]
+https://www.python.org/ftp/python/3.7.2/python-3.7.2.exe
 
-## Search for a specific location by it’s type:
-    [FR]-Rechercher un lieu spécifique par son type 
-        = ['locations'] -> ['types']
+# Avant de lancer le serveur Django, pensez à changer son identifiant, rendez-vous dans le fichier:
+    "AboutsGoodsApp/webapp/settings.py" ligne 25 
+     SECRET_KEY = 'your password'
 
-## When clicking on a location, showing details and image of the planet and a list of all the residents:
-    [FR]-En cliquant sur un lieu, montrant les détails et l'image de la planète et une liste de tous les résidents
-        = ['locations'] -> ['residents']
+# Packages Python nécessaires:
+- Django, Request
+`` terminal
+git clone https://github.com/Lyss74/AboutsGoodsApp.git
+cd AboutsGoodsApp
+pipenv install ``
+Cela va installè les packages necessaires et lancer l'environement virtuel.
 
-## We want to show details (including picture) of a resident by clicking on it:
-    [FR]-Nous voulons montrer les détails (y compris la photo) d'un résident en cliquant dessus
-        = ['locations'] -> ['residents'] -> ['url'] {img}
+# Type de base de donnèes :
+-SQLite
 
-## We also want to create a new location or resident locally:
-    [FR]-Nous voulons également créer un nouvel emplacement ou un résident local
+## Lancez un serveur Django afin d'utiliser le framework:
+    
+# Ensuite lancez le serveur:
+`` terminal /AboutsGoodsApp
+python manage.py runserver  ``
 
-## We want a favorite system to save our favorite resident and location with a way to filter them by their type:
-    [FR]-Nous voulons un système favori pour enregistrer notre résident préféré et son emplacement avec un moyen de les filtrer par type.
-        favoris = [ ['resident'] -> ['location'] -> ['type'] ]
+Pensez à relever l'adresse ip du serveur qui va recueillir l'application web *Rick And Morty*.
+Vous pouvez dés à présent acceder a la page d'acceuil de l'application.
+
+## Liens
+
+Exercice de devellopement:
+- Page d'accueil du projet: https://aboutgoods.github.io/TestsInterviewsDev/multiplateformDeveloper2019
+- Dépôt Git: https://github.com/Lyss74/AboutsGoodsApp
+- Diagramme de classe: https://www.draw.io/#G1oXDlNG24hWU6TSOFxQqI69Z97v0tndfm
+
+## Fonctionnalités de l'application:
+
+*Naviguer à travers les planétes, découvrir ces personnages avec les épisodes associé à la série
+*Rechercher une planéte specifique juste par son 'type'
+*Afficher l'image d'une planéte et afficher toutes ses informations
+*Afficher l'image d'un résident et afficher toutes ses informations
+*Pouvoir ajoutez une nouvelle planete, un résident
+*Choisir un résident puis pouvoir le sauvegarder par 'type', afin de facilité sa recherche
