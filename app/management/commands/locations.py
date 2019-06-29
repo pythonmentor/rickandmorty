@@ -41,7 +41,7 @@ class Command(BaseCommand):
                     test = i['type']
                     # Change the key index in Json response
                     # to avoid word conflicts book
-                    i['character_type'] = test
+                    i['location_type'] = test
                     del i['type']
 
                     # import pdb; pdb.set_trace()
