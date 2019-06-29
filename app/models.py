@@ -1,4 +1,12 @@
-
+"""
+    This file structure the database:
+    1.Launch the make migration in terminal
+        'python manage.py makemigrations'
+    2.Launch the migrates for all table in application
+        'python manage.py migrate'
+    3.You can now consult your database in the
+      '0001_initial.py' file in the 'migrations' folder
+"""
 from django.db import models
 
 
@@ -7,7 +15,7 @@ class Character(models.Model):
         Creating the structure the table "Character" for database
     """
     # character_id = The id is auto generate by
-    # SQlite associated with a pimaire key
+    # SQLite associated with a primary key
     name = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
     species = models.CharField(max_length=255)
@@ -16,21 +24,8 @@ class Character(models.Model):
     origin = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     image = models.CharField(max_length=255)
-    episodes = models.ManyToManyField(Episode, related_name='characters')
-    url = models.CharField(max_length=255)
-    created = models.CharField(max_length=255)
-
-
-class Episode(models.Model):
-    """
-        Creating the structure the table "Episodes" for database
-    """
-    # episode_id = The id is auto generate by
-    # SQlite associated with a pimaire key
-    name = models.CharField(max_length=255)
-    air_date = models.CharField(max_length=255)
-    episode = models.CharField(max_length=255)
-    characters = models.ManyToManyField(Character, related_name='episodes')
+    episodes = models.ManyToManyField('Episode',
+                                      related_name='character_episode')
     url = models.CharField(max_length=255)
     created = models.CharField(max_length=255)
 
@@ -44,7 +39,23 @@ class Location(models.Model):
     name = models.CharField(max_length=255)
     location_type = models.CharField(max_length=255)
     dimension = models.CharField(max_length=255)
-    residents = models.ManyToManyField(Character, related_name='locations')
+    residents = models.ManyToManyField('Character',
+                                       related_name='location_resident')
+    url = models.CharField(max_length=255)
+    created = models.CharField(max_length=255)
+
+
+class Episode(models.Model):
+    """
+        Creating the structure the table "Episodes" for database
+    """
+    # episode_id = The id is auto generate by
+    # SQlite associated with a pimaire key
+    name = models.CharField(max_length=255)
+    air_date = models.CharField(max_length=255)
+    episode = models.CharField(max_length=255)
+    characters = models.ManyToManyField('Character',
+                                        related_name='episode_character')
     url = models.CharField(max_length=255)
     created = models.CharField(max_length=255)
 
@@ -56,10 +67,13 @@ class Picture(models.Model):
     """
     # picture_id = The id is auto generate by
     # SQlite associated with a pimaire key
-    Character_id = models.ForeignKey('characters', on_delete=models.CASCADE)
-    Location_id = models.ForeignKey('locations', on_delete=models.CASCADE)
+    Character_id = models.ForeignKey(Character,
+                                     related_name='picture_characters',
+                                     on_delete=models.CASCADE)
+    Location_id = models.ForeignKey(Location,
+                                    related_name='picture_location',
+                                    on_delete=models.CASCADE)
     url = models.CharField(max_length=255)
-
 
 class Favorite(models.Model):
     """
