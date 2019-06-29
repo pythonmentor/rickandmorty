@@ -16,18 +16,18 @@ class Character(models.Model):
     """
     # character_id = The id is auto generate by
     # SQLite associated with a primary key
-    name = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
-    species = models.CharField(max_length=255)
-    character_type = models.CharField(max_length=255)
-    gender = models.CharField(max_length=255)
-    origin = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    image = models.CharField(max_length=255)
-    episodes = models.ManyToManyField('Episode',
+    name = models.CharField(max_length=255, null=True)
+    status = models.CharField(max_length=255, null=True)
+    species = models.CharField(max_length=255, null=True)
+    character_type = models.CharField(max_length=255, null=True)
+    gender = models.CharField(max_length=255, null=True)
+    origin = models.CharField(max_length=255, null=True)
+    location = models.CharField(max_length=255, null=True)
+    image = models.CharField(max_length=255, null=True)
+    episode = models.ManyToManyField('Episode',
                                       related_name='character_episode')
-    url = models.CharField(max_length=255)
-    created = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, null=True)
+    created = models.CharField(max_length=255, null=True)
 
 
 class Location(models.Model):
@@ -35,14 +35,14 @@ class Location(models.Model):
         Creating the structure the table "Location" for database
     """
     # location_id = The id is auto generate by
-    # SQlite associated with a pimaire key
-    name = models.CharField(max_length=255)
-    location_type = models.CharField(max_length=255)
-    dimension = models.CharField(max_length=255)
+    # SQLite associated with a pimaire key
+    name = models.CharField(max_length=255, null=True)
+    location_type = models.CharField(max_length=255, null=True)
+    dimension = models.CharField(max_length=255, null=True)
     residents = models.ManyToManyField('Character',
                                        related_name='location_resident')
-    url = models.CharField(max_length=255)
-    created = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, null=True)
+    created = models.CharField(max_length=255, null=True)
 
 
 class Episode(models.Model):
@@ -50,14 +50,14 @@ class Episode(models.Model):
         Creating the structure the table "Episodes" for database
     """
     # episode_id = The id is auto generate by
-    # SQlite associated with a pimaire key
-    name = models.CharField(max_length=255)
-    air_date = models.CharField(max_length=255)
-    episode = models.CharField(max_length=255)
+    # SQLite associated with a pimaire key
+    name = models.CharField(max_length=255, null=True)
+    air_date = models.CharField(max_length=255, null=True)
+    episode = models.CharField(max_length=255, null=True)
     characters = models.ManyToManyField('Character',
                                         related_name='episode_character')
-    url = models.CharField(max_length=255)
-    created = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, null=True)
+    created = models.CharField(max_length=255, null=True)
 
 
 class Picture(models.Model):
@@ -66,14 +66,14 @@ class Picture(models.Model):
         and "Location" for the "Pictures" table
     """
     # picture_id = The id is auto generate by
-    # SQlite associated with a pimaire key
+    # SQLite associated with a pimaire key
     Character_id = models.ForeignKey(Character,
                                      related_name='picture_characters',
                                      on_delete=models.CASCADE)
     Location_id = models.ForeignKey(Location,
                                     related_name='picture_location',
                                     on_delete=models.CASCADE)
-    url = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, null=True)
 
 class Favorite(models.Model):
     """
@@ -81,7 +81,7 @@ class Favorite(models.Model):
         preferred residents with their rental and type
     """
     # favorite_id = The id is auto generate by
-    # SQlite associated with a pimaire key
+    # SQLite associated with a pimaire key
     resident = models.CharField(max_length=255)
     location_resident = models.CharField(max_length=255)
     type_resident = models.CharField(max_length=255)
@@ -94,6 +94,9 @@ class Favorite(models.Model):
         """
         return self.resident
 
+
+# py manage.py runserver
+# py manage.py characters
 
 # pipenv install django-extensions
 #
