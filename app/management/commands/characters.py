@@ -1,6 +1,11 @@
+"""
+    This file is responsible for collecting all data related to the characters in the series
+"""
 from django.core.management.base import BaseCommand, CommandError
 
 import requests as req
+
+from pprint import pprint
 
 from app.models import Character
 
@@ -8,12 +13,13 @@ from app.models import Character
 class Command(BaseCommand):
     help = 'Download all characters'
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **kwarg):
         """
             Use the configuration for the connecting interface
         """
         characters = []
-        pages = [0, 1, 2, 3, 4]
+        # Go through all the pages
+        pages = range(0, 25)
         # Address  rick and morty api the API
         url = "https://rickandmortyapi.com/api/character/"
         # This config for connecting API
@@ -32,8 +38,16 @@ class Command(BaseCommand):
             results = response.json()
             # select the desired content
             characters.append(results['results'])
+            # pprint(characters)
             for character in characters:
-                Character.objects.create(**character)
+                for i in character[:]:
+                    test = i['type']
+                    # Change the key index in Json response
+                    # to avoid word conflicts book
+                    i['character_type'] = test
+                    del i['type']
+                    # import pdb; pdb.set_trace()
+                    Character.objects.create(**i)
 
 
 # python manage.py characters

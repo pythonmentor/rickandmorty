@@ -1,3 +1,6 @@
+"""
+    This file is responsible for collecting all data related to the episodes of the series
+"""
 from django.core.management.base import BaseCommand, CommandError
 
 import requests as req
@@ -13,7 +16,8 @@ class Command(BaseCommand):
             Use the configuration for the connecting interface
         """
         episodes = []
-        pages = [0, 1, 2, 3, 4]
+        # Go through all the pages
+        pages = range(0, 2)
         # Address  rick and morty api the API
         url = "https://rickandmortyapi.com/api/episode/"
         # This config for connecting API
@@ -32,8 +36,11 @@ class Command(BaseCommand):
             results = response.json()
             # select the desired content
             episodes.append(results['results'])
+            # pprint(characters)
             for episode in episodes:
-                Episode.objects.create(**episode)
+                for i in episode:
+                    # import pdb; pdb.set_trace()
+                    Episode.objects.create(**i)
 
 
 # python manage.py episodes

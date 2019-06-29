@@ -1,3 +1,6 @@
+"""
+    This file is responsible for collecting all data related to the locations of the series
+"""
 from django.core.management.base import BaseCommand, CommandError
 
 import requests as req
@@ -13,7 +16,8 @@ class Command(BaseCommand):
             Use the configuration for the connecting interface
         """
         locations = []
-        pages = [0, 1, 2, 3, 4]
+        # Go through all the pages
+        pages = range(0, 4)
         # Address  rick and morty api the API
         url = "https://rickandmortyapi.com/api/location/"
         # This config for connecting API
@@ -33,7 +37,15 @@ class Command(BaseCommand):
             # select the desired content
             locations.append(results['results'])
             for location in locations:
-                Location.objects.create(**location)
+                for i in location:
+                    test = i['type']
+                    # Change the key index in Json response
+                    # to avoid word conflicts book
+                    i['character_type'] = test
+                    del i['type']
+
+                    # import pdb; pdb.set_trace()
+                    Location.objects.create(**location)
 
 
 # python manage.py locations
