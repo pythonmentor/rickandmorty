@@ -24,15 +24,18 @@ class Character(models.Model):
     species = models.CharField(max_length=255, blank=True, null=True)
     character_type = models.CharField(max_length=255, blank=True, null=True)
     gender = models.CharField(max_length=255, blank=True, null=True)
-    origin = models.ForeignKey('Location', on_delete=models.CASCADE)
+    origin = models.ForeignKey('Location', on_delete=models.CASCADE, null=True)
     location = models.ForeignKey('Location', on_delete=models.CASCADE, 
-                                 related_name='characters')
+                                 related_name='characters', null=True)
     image_url = models.URLField(blank=True, null=True)
-    episode = models.ManyToManyField('Episode', related_name='characters')
+    episodes = models.ManyToManyField('Episode', related_name='characters')
     url = models.URLField(blank=True, null=True)
     favorite = GenericRelation('Favorite', related_query_name='character')
     created = models.DateTimeField()
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Location(models.Model):
@@ -43,12 +46,13 @@ class Location(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     location_type = models.CharField(max_length=255, blank=True, null=True)
     dimension = models.CharField(max_length=255, blank=True, null=True)
-    residents = models.ManyToManyField('Character',
-                                       related_name='locations')
     url = models.URLField(blank=True, null=True)
     favorite = GenericRelation('Favorite', related_query_name='location')
     created = models.DateTimeField()
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Episode(models.Model):
@@ -59,12 +63,15 @@ class Episode(models.Model):
     # SQLite associated with a pimaire key
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    air_date = models.DateField(null=True)
+    air_date = models.CharField(max_length=255, blank=True, null=True)
     episode = models.CharField(max_length=255, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     favorite = GenericRelation('Favorite', related_query_name='episode')
     created = models.DateTimeField()
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Favorite(models.Model):
@@ -77,6 +84,9 @@ class Favorite(models.Model):
     favorite = GenericForeignKey('favorite_type', 'favorite_id')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.favorite_type}{self.favorite.name}"
 
     def __str__(self):
         """
